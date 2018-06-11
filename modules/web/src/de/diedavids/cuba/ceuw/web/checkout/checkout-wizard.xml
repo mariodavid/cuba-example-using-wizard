@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        xmlns:wizard="http://schemas.diedavids.de/wizard/0.1/ui-component.xsd"
+        caption="msg://checkoutWizard"
+        class="de.diedavids.cuba.ceuw.web.checkout.CheckoutWizard"
+        messagesPack="de.diedavids.cuba.ceuw.web.checkout">
+    <dialogMode height="600"
+                width="800"/>
+
+    <layout>
+        <wizard:wizard id="checkoutWizard" width="100%" caption="Checkout">
+
+            <wizard:step id="step1"
+                         icon="font-icon:ADN"
+                         caption="msg://step1Customer"
+                         screen="checkout-step-1-customer" />
+
+            <wizard:step id="step2"
+                         icon="font-icon:ANCHOR"
+                         caption="msg://step2Address"
+                         screen="checkout-step-2-address" />
+
+            <wizard:step id="step3"
+                         icon="font-icon:ANCHOR"
+                         caption="msg://step3Items"
+                         screen="checkout-step-3-items" />
+
+            <wizard:step id="step4"
+                         icon="font-icon:ANCHOR"
+                         caption="msg://step4Summary"
+                         screen="checkout-step-4-summary" />
+        </wizard:wizard>
+    </layout>
+</window>
+

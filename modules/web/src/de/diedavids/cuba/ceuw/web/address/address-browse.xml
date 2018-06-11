@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="de.diedavids.cuba.ceuw.web.address.AddressBrowse"
+        focusComponent="addressesTable"
+        lookupComponent="addressesTable"
+        messagesPack="de.diedavids.cuba.ceuw.web.address">
+    <dsContext>
+        <groupDatasource id="addressesDs"
+                         class="de.diedavids.cuba.ceuw.entity.Address"
+                         view="_local">
+            <query>
+                <![CDATA[select e from ceuw$Address e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="addressesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="addressesTable"
+                datasource="addressesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="addressesTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="street"/>
+                <column id="postalCode"/>
+                <column id="city"/>
+                <column id="country"/>
+            </columns>
+            <rows datasource="addressesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="addressesTable.create"/>
+                <button id="editBtn"
+                        action="addressesTable.edit"/>
+                <button id="removeBtn"
+                        action="addressesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

@@ -18,4 +18,16 @@
             template="de/diedavids/cuba/ceuw/web/customer/customer-browse.xml"/>
     <screen id="ceuw$Customer.edit"
             template="de/diedavids/cuba/ceuw/web/customer/customer-edit.xml"/>
+    <screen id="ceuw$Address.browse"
+            template="de/diedavids/cuba/ceuw/web/address/address-browse.xml"/>
+    <screen id="checkout-wizard"
+            template="de/diedavids/cuba/ceuw/web/checkout/checkout-wizard.xml"/>
+    <screen id="checkout-step-1-customer"
+            template="de/diedavids/cuba/ceuw/web/checkout/steps/checkout-step-1-customer.xml"/>
+    <screen id="checkout-step-2-address"
+            template="de/diedavids/cuba/ceuw/web/checkout/steps/checkout-step-2-address.xml"/>
+    <screen id="checkout-step-3-items"
+            template="de/diedavids/cuba/ceuw/web/checkout/steps/checkout-step-3-items.xml"/>
+    <screen id="checkout-step-4-summary"
+            template="de/diedavids/cuba/ceuw/web/checkout/steps/checkout-step-4-summary.xml"/>
 </screen-config>

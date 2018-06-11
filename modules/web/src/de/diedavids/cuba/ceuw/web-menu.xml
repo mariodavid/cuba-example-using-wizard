@@ -5,5 +5,7 @@
         <item screen="ceuw$Product.browse"/>
         <item screen="ceuw$Order.browse"/>
         <item screen="ceuw$Customer.browse"/>
+        <item screen="ceuw$Address.browse"/>
+        <item screen="checkout-wizard"/>
     </menu>
 </menu-config>

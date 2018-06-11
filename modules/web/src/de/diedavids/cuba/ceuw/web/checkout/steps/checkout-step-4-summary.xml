@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="de.diedavids.cuba.ceuw.web.checkout.steps.CheckoutStep4Summary"
+        messagesPack="de.diedavids.cuba.ceuw.web.checkout.steps">
+    <layout>
+        <button id="button"
+                caption="My Frame 3" invoke="buttonClick"/>
+    </layout>
+</window>
