@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+    <view class="de.diedavids.cuba.ceuw.entity.OrderLine"
+          extends="_local"
+          name="orderLine-view">
+        <property name="product"
+                  view="_base"/>
+    </view>
+    <view class="de.diedavids.cuba.ceuw.entity.Order"
+          extends="_local"
+          name="order-view">
+        <property name="customer"
+                  view="_minimal"/>
+        <property name="deliveryAddress"
+                  view="_minimal"/>
+        <property name="invoiceAddress"
+                  view="_minimal"/>
+        <property name="orderLines"
+                  view="orderLine-view"/>
+    </view>
+</views>
