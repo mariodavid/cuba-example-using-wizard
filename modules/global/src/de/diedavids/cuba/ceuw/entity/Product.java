@@ -6,6 +6,11 @@ import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.chile.core.annotations.NamePattern;
+import com.haulmont.chile.core.annotations.Composition;
+import com.haulmont.cuba.core.entity.annotation.OnDelete;
+import com.haulmont.cuba.core.global.DeletePolicy;
+import java.util.List;
+import javax.persistence.OneToMany;
 
 @NamePattern("%s|name")
 @Table(name = "CEUW_PRODUCT")
@@ -24,6 +29,20 @@ public class Product extends StandardEntity {
     @NotNull
     @Column(name = "TAX", nullable = false)
     protected Integer tax;
+
+    @Composition
+    @OnDelete(DeletePolicy.CASCADE)
+    @OneToMany(mappedBy = "product")
+    protected List<ProductPrice> prices;
+
+    public void setPrices(List<ProductPrice> prices) {
+        this.prices = prices;
+    }
+
+    public List<ProductPrice> getPrices() {
+        return prices;
+    }
+
 
     public void setTax(Integer tax) {
         this.tax = tax;

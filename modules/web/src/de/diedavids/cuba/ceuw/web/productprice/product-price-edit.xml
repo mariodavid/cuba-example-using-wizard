@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="de.diedavids.cuba.ceuw.web.productprice.ProductPriceEdit"
+        datasource="productPriceDs"
+        focusComponent="fieldGroup"
+        messagesPack="de.diedavids.cuba.ceuw.web.productprice">
+    <dsContext>
+        <datasource id="productPriceDs"
+                    class="de.diedavids.cuba.ceuw.entity.ProductPrice"
+                    view="_local"/>
+    </dsContext>
+    <dialogMode forceDialog="true"
+                height="AUTO"
+                width="600"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="productPriceDs">
+            <column width="250px">
+                <field property="value"/>
+                <field property="unit"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

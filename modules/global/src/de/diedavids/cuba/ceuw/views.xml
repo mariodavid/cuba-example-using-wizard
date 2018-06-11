@@ -18,4 +18,16 @@
         <property name="orderLines"
                   view="orderLine-view"/>
     </view>
+    <view class="de.diedavids.cuba.ceuw.entity.Product"
+          extends="_local"
+          name="product-view">
+        <property name="prices"
+                  view="_base"/>
+    </view>
+    <view class="de.diedavids.cuba.ceuw.entity.Customer"
+          extends="_local"
+          name="customer-view">
+        <property name="addresses"
+                  view="_base"/>
+    </view>
 </views>
