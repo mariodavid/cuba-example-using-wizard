@@ -4,29 +4,54 @@
         caption="msg://checkoutWizard"
         class="de.diedavids.cuba.ceuw.web.checkout.CheckoutWizard"
         messagesPack="de.diedavids.cuba.ceuw.web.checkout">
-    <dialogMode height="600"
-                width="800"/>
 
-    <layout>
-        <wizard:wizard id="checkoutWizard" width="100%" caption="Checkout">
+
+    <dsContext>
+        <datasource id="customerDs"
+                    class="de.diedavids.cuba.ceuw.entity.Customer"
+                    view="customer-view">
+            <collectionDatasource id="addressesDs"
+                                  property="addresses"/>
+        </datasource>
+
+        <datasource id="deliveryAddressDs"
+                    class="de.diedavids.cuba.ceuw.entity.Address" />
+
+        <datasource id="invoiceAddressDs"
+                    class="de.diedavids.cuba.ceuw.entity.Address" />
+
+        <datasource id="orderDs"
+                    class="de.diedavids.cuba.ceuw.entity.Order"
+                    view="order-view">
+            <collectionDatasource id="orderLinesDs"
+                                  property="orderLines"/>
+        </datasource>
+    </dsContext>
+
+    <dialogMode
+        width="800px"
+        height="600px"
+        forceDialog="true" />
+    <layout expand="checkoutWizard">
+        <wizard:wizard id="checkoutWizard" width="100%">
 
             <wizard:step id="step1"
-                         icon="font-icon:ADN"
+                         icon="font-icon:USER"
                          caption="msg://step1Customer"
                          screen="checkout-step-1-customer" />
 
             <wizard:step id="step2"
-                         icon="font-icon:ANCHOR"
+                         icon="font-icon:MAP_MARKER"
                          caption="msg://step2Address"
                          screen="checkout-step-2-address" />
 
             <wizard:step id="step3"
-                         icon="font-icon:ANCHOR"
+                         icon="font-icon:LIST_UL"
                          caption="msg://step3Items"
                          screen="checkout-step-3-items" />
 
             <wizard:step id="step4"
-                         icon="font-icon:ANCHOR"
+                         icon="font-icon:CHECK"
                          caption="msg://step4Summary"
                          screen="checkout-step-4-summary" />
         </wizard:wizard>

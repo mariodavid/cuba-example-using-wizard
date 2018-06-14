@@ -23,6 +23,9 @@
                 <field property="name"/>
                 <field property="firstName"/>
                 <field property="email"/>
+                <field property="phone"/>
+                <field property="salutation"/>
+                <field property="birthday"/>
             </column>
         </fieldGroup>
         <groupBox id="addressesBox"

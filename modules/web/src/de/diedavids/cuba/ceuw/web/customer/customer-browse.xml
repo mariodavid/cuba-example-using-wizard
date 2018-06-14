@@ -34,6 +34,9 @@
                 <column id="name"/>
                 <column id="firstName"/>
                 <column id="email"/>
+                <column id="phone"/>
+                <column id="salutation"/>
+                <column id="birthday"/>
             </columns>
             <rows datasource="customersDs"/>
             <rowsCount/>

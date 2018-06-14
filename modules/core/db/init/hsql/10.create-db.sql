@@ -9,9 +9,12 @@ create table CEUW_CUSTOMER (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    NAME varchar(255),
-    FIRST_NAME varchar(255),
+    SALUTATION varchar(50),
+    NAME varchar(255) not null,
+    FIRST_NAME varchar(255) not null,
+    BIRTHDAY date,
     EMAIL varchar(255) not null,
+    PHONE varchar(255),
     --
     primary key (ID)
 )^

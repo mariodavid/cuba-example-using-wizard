@@ -18,7 +18,7 @@
         <fieldGroup id="fieldGroup"
                     datasource="orderLineDs">
             <column width="250px">
-                <field property="position"/>
+                <field property="position" editable="false"/>
                 <field property="product"/>
                 <field property="amount"/>
                 <field property="amountUnit"/>
