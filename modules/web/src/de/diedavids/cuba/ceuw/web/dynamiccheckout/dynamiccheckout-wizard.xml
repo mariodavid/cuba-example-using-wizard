@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        xmlns:wizard="http://schemas.diedavids.de/wizard/0.1/ui-component.xsd"
+        caption="msg://checkoutWizard"
+        class="de.diedavids.cuba.ceuw.web.checkout.CheckoutWizard"
+        messagesPack="de.diedavids.cuba.ceuw.web.checkout">
+
+
+    <dsContext>
+        <datasource id="customerDs"
+                    class="de.diedavids.cuba.ceuw.entity.Customer"
+                    view="customer-view">
+            <collectionDatasource id="addressesDs"
+                                  property="addresses"/>
+        </datasource>
+
+        <datasource id="deliveryAddressDs"
+                    class="de.diedavids.cuba.ceuw.entity.Address" />
+
+        <datasource id="invoiceAddressDs"
+                    class="de.diedavids.cuba.ceuw.entity.Address" />
+
+        <datasource id="orderDs"
+                    class="de.diedavids.cuba.ceuw.entity.Order"
+                    view="order-view">
+            <collectionDatasource id="orderLinesDs"
+                                  property="orderLines"/>
+        </datasource>
+    </dsContext>
+
+    <dialogMode
+        width="800px"
+        height="600px"
+        forceDialog="true" />
+    <layout expand="checkoutWizard">
+        <wizard:wizard id="checkoutWizard" width="100%">
+
+            <wizard:step id="step1"
+                         icon="font-icon:USER"
+                         caption="msg://step1Customer"
+                         screen="checkout-step-1-customer" />
+
+            <wizard:step id="step2"
+                         icon="font-icon:MAP_MARKER"
+                         caption="msg://step2Address"
+                         screen="checkout-step-2-address" />
+
+            <wizard:step id="step3"
+                         icon="font-icon:LIST_UL"
+                         caption="msg://step3Items"
+                         screen="checkout-step-3-items" />
+
+            <wizard:step id="step4"
+                         icon="font-icon:CHECK"
+                         caption="msg://step4Summary"
+                         screen="checkout-step-4-summary" />
+        </wizard:wizard>
+    </layout>
+</window>
+

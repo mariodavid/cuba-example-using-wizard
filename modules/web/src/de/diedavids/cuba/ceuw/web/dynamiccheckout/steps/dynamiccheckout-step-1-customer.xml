@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="de.diedavids.cuba.ceuw.web.dynamiccheckout.steps.DynamicCheckoutStep1Customer"
+        messagesPack="de.diedavids.cuba.ceuw.web.dynamiccheckout.steps">
+
+    <layout>
+        <hbox id="customerContentBox" spacing="true" height="200px" width="100%" >
+            <groupBox caption="Customer information" width="100%" height="100%">
+                <fieldGroup id="fieldGroup"
+                            width="100%"
+                            datasource="customerDs">
+                    <column width="100%">
+                        <field property="salutation"/>
+                        <field property="name"/>
+                        <field property="firstName"/>
+                        <field property="birthday"/>
+                    </column>
+                </fieldGroup>
+            </groupBox>
+            <groupBox caption="Communication" width="100%" height="100%">
+                <fieldGroup id="communicationFieldGroup"
+                            width="100%"
+                            datasource="customerDs">
+
+                    <column width="100%">
+                        <field property="email"/>
+                        <field property="phone"/>
+
+                    </column>
+                </fieldGroup>
+            </groupBox>
+        </hbox>
+
+    </layout>
+</window>
