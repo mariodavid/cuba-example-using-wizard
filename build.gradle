@@ -1,6 +1,6 @@
 
 buildscript {
-    ext.cubaVersion = '6.9.8'
+    ext.cubaVersion = '6.10.7'
     repositories {
         
         mavenLocal()
@@ -46,7 +46,7 @@ cuba {
 
 dependencies {
     appComponent("com.haulmont.cuba:cuba-global:$cubaVersion")
-    appComponent("de.diedavids.cuba.wizard:wizard-global:0.2.0")
+    appComponent("de.diedavids.cuba.wizard:wizard-global:0.3.0")
 
 }
 
@@ -73,7 +73,9 @@ configure([globalModule, coreModule, webModule]) {
 }
 
 configure(globalModule) {
-    task enhance(type: CubaEnhancing)
+    entitiesEnhancing {
+        main { enabled = true }
+    }
 
     
 }
