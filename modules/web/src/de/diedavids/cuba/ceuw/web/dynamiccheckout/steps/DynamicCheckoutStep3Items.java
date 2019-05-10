@@ -1,8 +1,11 @@
 package de.diedavids.cuba.ceuw.web.dynamiccheckout.steps;
 
 import com.haulmont.bali.util.ParamsMap;
+import com.haulmont.cuba.gui.Notifications;
 import com.haulmont.cuba.gui.components.Table;
 import com.haulmont.cuba.gui.components.actions.CreateAction;
+import com.haulmont.cuba.gui.screen.MessageBundle;
+import com.haulmont.cuba.gui.screen.Subscribe;
 import de.diedavids.cuba.ceuw.entity.OrderLine;
 import de.diedavids.cuba.wizard.gui.components.AbstractWizardStep;
 
@@ -20,21 +23,33 @@ public class DynamicCheckoutStep3Items extends AbstractWizardStep {
     @Named("orderLinesTable.create")
     CreateAction createAction;
 
-    @Override
-    public void init(Map<String, Object> params) {
-        super.init(params);
-        createAction.setInitialValuesSupplier(() -> ParamsMap.of("position", getNextPosition()));
+    @Inject
+    protected Notifications notifications;
 
+    @Inject
+    protected MessageBundle messageBundle;
+
+    @Subscribe
+    protected void onInit(InitEvent event) {
+        createAction.setInitialValuesSupplier(() -> ParamsMap.of("position", getNextPosition()));
     }
 
+
+/*
     @Override
     public boolean preClose() {
         return validateAll() && orderHasOneOrderLine();
     }
+*/
+
 
     private boolean orderHasOneOrderLine() {
         if (getOrderLines().size() == 0) {
-            showNotification(formatMessage("validationAtLeastOneOrderLine"), NotificationType.TRAY);
+
+            notifications.create(Notifications.NotificationType.TRAY)
+                    .withCaption(messageBundle.formatMessage("validationAtLeastOneOrderLine"))
+                    .show();
+
             return false;
         }
         return true;

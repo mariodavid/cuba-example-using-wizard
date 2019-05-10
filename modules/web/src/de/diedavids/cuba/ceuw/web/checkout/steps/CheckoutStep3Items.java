@@ -1,9 +1,14 @@
 package de.diedavids.cuba.ceuw.web.checkout.steps;
 
 import com.haulmont.bali.util.ParamsMap;
+import com.haulmont.cuba.gui.Notifications;
 import com.haulmont.cuba.gui.components.Frame;
 import com.haulmont.cuba.gui.components.Table;
 import com.haulmont.cuba.gui.components.actions.CreateAction;
+import com.haulmont.cuba.gui.screen.MessageBundle;
+import com.haulmont.cuba.gui.screen.Subscribe;
+import com.haulmont.cuba.gui.screen.UiController;
+import com.haulmont.cuba.gui.screen.UiDescriptor;
 import de.diedavids.cuba.ceuw.entity.OrderLine;
 import de.diedavids.cuba.wizard.gui.components.AbstractWizardStep;
 
@@ -13,20 +18,29 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Optional;
 
+
+@UiController("checkout-step-3-items")
+@UiDescriptor("checkout-step-3-items.xml")
 public class CheckoutStep3Items extends AbstractWizardStep {
 
     @Inject
     protected Table<OrderLine> orderLinesTable;
 
+    @Inject
+    protected Notifications notifications;
+
+    @Inject
+    protected MessageBundle messageBundle;
+
     @Named("orderLinesTable.create")
     CreateAction createAction;
 
-    @Override
-    public void init(Map<String, Object> params) {
-        super.init(params);
+    @Subscribe
+    protected void onInit(InitEvent event) {
         createAction.setInitialValuesSupplier(() -> ParamsMap.of("position", getNextPosition()));
-
     }
+
+
 
     @Override
     public boolean preClose() {
@@ -35,7 +49,11 @@ public class CheckoutStep3Items extends AbstractWizardStep {
 
     private boolean orderHasOneOrderLine() {
         if (getOrderLines().size() == 0) {
-            showNotification(formatMessage("validationAtLeastOneOrderLine"), NotificationType.TRAY);
+
+            notifications.create(Notifications.NotificationType.TRAY)
+                    .withCaption(messageBundle.formatMessage("validationAtLeastOneOrderLine"))
+                    .show();
+
             return false;
         }
         return true;
