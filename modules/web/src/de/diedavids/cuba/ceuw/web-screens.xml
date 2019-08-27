@@ -28,6 +28,16 @@
     <screen id="checkout-step-4-summary"
             template="de/diedavids/cuba/ceuw/web/checkout/steps/checkout-step-4-summary.xml"/>
     -->
+    <screen id="wizard-example-1"
+            template="de/diedavids/cuba/ceuw/web/example1/wizard-example-1.xml"/>
+    <screen id="example-1-step-1-frame"
+            template="/de/diedavids/cuba/ceuw/web/example1/steps/example-1-step-1.xml"/>
+    <screen id="example-1-step-2-frame"
+            template="de/diedavids/cuba/ceuw/web/example1/steps/example-1-step-2.xml"/>
+    <screen id="example-1-step-3-frame"
+            template="de/diedavids/cuba/ceuw/web/example1/steps/example-1-step-3.xml"/>
+    <screen id="example-1-step-4-frame"
+            template="de/diedavids/cuba/ceuw/web/example1/steps/example-1-step-4.xml"/>
     <screen id="dynamiccheckout-wizard"
             template="de/diedavids/cuba/ceuw/web/dynamiccheckout/dynamiccheckout-wizard.xml"/>
     <screen id="dynamiccheckout-step-1-customer"
