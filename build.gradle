@@ -1,9 +1,12 @@
 
 buildscript {
-    ext.cubaVersion = '7.0.5'
+    ext.cubaVersion = '7.1.0'
     repositories {
         
         mavenLocal()
+        maven {
+            url  "https://dl.bintray.com/mariodavid/cuba-components"
+        }
         maven {
             url 'https://repo.cuba-platform.com/content/groups/work'
             credentials {
@@ -45,7 +48,7 @@ cuba {
 
 dependencies {
     appComponent("com.haulmont.cuba:cuba-global:$cubaVersion")
-    appComponent("de.diedavids.cuba.wizard:wizard-global:0.4.1-SNAPSHOT")
+    appComponent("de.diedavids.cuba.wizard:wizard-global:0.5.0")
 
 }
 
