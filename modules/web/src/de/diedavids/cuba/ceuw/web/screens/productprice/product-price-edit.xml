@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+  caption="msg://productPriceEdit.caption"
+  focusComponent="form"
+  messagesPack="de.diedavids.cuba.ceuw.web.screens.productprice">
+  <data>
+    <instance id="productPriceDc"
+      class="de.diedavids.cuba.ceuw.entity.ProductPrice">
+      <view extends="_local">
+        <property name="product" view="_minimal"/>
+      </view>
+      <loader/>
+    </instance>
+  </data>
+  <dialogMode height="AUTO"
+    width="AUTO"
+    modal="true"
+    forceDialog="true"/>
+  <layout expand="editActions" spacing="true">
+    <form id="form" dataContainer="productPriceDc">
+      <column width="350px">
+        <pickerField id="productField" property="product">
+          <actions>
+            <action id="lookup" type="picker_lookup"/>
+            <action id="clear" type="picker_clear"/>
+          </actions>
+        </pickerField>
+        <textField id="valueField" property="value"/>
+        <lookupField id="unitField" property="unit"/>
+      </column>
+    </form>
+    <hbox id="editActions" spacing="true">
+      <button action="windowCommitAndClose"/>
+      <button action="windowClose"/>
+    </hbox>
+  </layout>
+</window>

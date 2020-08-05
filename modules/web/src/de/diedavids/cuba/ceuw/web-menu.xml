@@ -7,5 +7,6 @@
         <item screen="ceuw$Customer.browse"/>
         <item screen="checkout-wizard"/>
         <item screen="dynamiccheckout-wizard"/>
+        <item screen="ceuw_CheckoutWizard" caption="mainMsg://menu_config.ceuw_CheckoutWizard"/>
     </menu>
 </menu-config>

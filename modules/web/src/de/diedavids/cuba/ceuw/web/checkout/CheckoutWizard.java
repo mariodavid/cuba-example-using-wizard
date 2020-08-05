@@ -42,59 +42,59 @@ public class CheckoutWizard extends AbstractWindow {
     public void init(Map<String, Object> params) {
         super.init(params);
 
-        Customer customer = initCustomerAddress();
-        Address deliveryAddress = initDeliveryAddress(customer);
-        Address invoiceAddress = initInvoiceAddress();
-        Order order = initOrder(customer, deliveryAddress);
-
-        checkoutWizard.addWizardFinishClickListener(event -> {
-
-            if (isDeliveryAddressSameAsInvoiceAddress(invoiceAddress)) {
-                removeInvoiceAddress();
-            } else {
-                setInvoiceAddressReferences(customer, invoiceAddress, order);
-            }
-
-            closeWizard();
-        });
-
-        checkoutWizard.addWizardCancelClickListener(this::closeWizardScreen);
+//        Customer customer = initCustomerAddress();
+//        Address deliveryAddress = initDeliveryAddress(customer);
+//        Address invoiceAddress = initInvoiceAddress();
+//        Order order = initOrder(customer, deliveryAddress);
+//
+//        checkoutWizard.addWizardFinishClickListener(event -> {
+//
+//            if (isDeliveryAddressSameAsInvoiceAddress(invoiceAddress)) {
+//                removeInvoiceAddress();
+//            } else {
+//                setInvoiceAddressReferences(customer, invoiceAddress, order);
+//            }
+//
+//            closeWizard();
+//        });
+//
+//        checkoutWizard.addWizardCancelClickListener(this::closeWizardScreen);
 
     }
 
-    private void closeWizardScreen() {
-        close(COMMIT_ACTION_ID);
-    }
+//    private void closeWizardScreen() {
+//        close(COMMIT_ACTION_ID);
+//    }
 
-    private Order initOrder(Customer customer, Address deliveryAddress) {
-        Order order = createOrderForCustomerAndDeliveryAddress(customer, deliveryAddress);
-        orderDs.setItem(order);
-        return order;
-    }
+//    private Order initOrder(Customer customer, Address deliveryAddress) {
+//        Order order = createOrderForCustomerAndDeliveryAddress(customer, deliveryAddress);
+//        orderDs.setItem(order);
+//        return order;
+//    }
+//
+//    private Customer initCustomerAddress() {
+//        Customer customer = metadata.create(Customer.class);
+//        customerDs.setItem(customer);
+//        return customer;
+//    }
+//
+//    private Address initDeliveryAddress(Customer customer) {
+//        Address deliveryAddress = createAddressFor(customer);
+//        deliveryAddressDs.setItem(deliveryAddress);
+//        return deliveryAddress;
+//    }
+//
+//    private Address initInvoiceAddress() {
+//        Address invoiceAddress = metadata.create(Address.class);
+//        invoiceAddressDs.setItem(invoiceAddress);
+//        return invoiceAddress;
+//    }
 
-    private Customer initCustomerAddress() {
-        Customer customer = metadata.create(Customer.class);
-        customerDs.setItem(customer);
-        return customer;
-    }
-
-    private Address initDeliveryAddress(Customer customer) {
-        Address deliveryAddress = createAddressFor(customer);
-        deliveryAddressDs.setItem(deliveryAddress);
-        return deliveryAddress;
-    }
-
-    private Address initInvoiceAddress() {
-        Address invoiceAddress = metadata.create(Address.class);
-        invoiceAddressDs.setItem(invoiceAddress);
-        return invoiceAddress;
-    }
-
-    private void closeWizard() {
-        dsContext.commit();
-        closeWizardScreen();
-        showNotification("Order placed successfully", NotificationType.TRAY);
-    }
+//    private void closeWizard() {
+//        dsContext.commit();
+//        closeWizardScreen();
+//        showNotification("Order placed successfully", NotificationType.TRAY);
+//    }
 
     private void setInvoiceAddressReferences(Customer customer, Address invoiceAddress, Order order) {
         invoiceAddress.setCustomer(customer);
@@ -118,13 +118,13 @@ public class CheckoutWizard extends AbstractWindow {
         return order;
     }
 
-    private Address createAddressFor(Customer customer) {
-        Address deliveryAddress = metadata.create(Address.class);
-        deliveryAddress.setCustomer(customer);
-        return deliveryAddress;
-    }
+//    private Address createAddressFor(Customer customer) {
+//        Address deliveryAddress = metadata.create(Address.class);
+//        deliveryAddress.setCustomer(customer);
+//        return deliveryAddress;
+//    }
 
-    private void closeWizardScreen(Wizard.WizardCancelClickEvent event) {
-        closeWizardScreen();
-    }
+//    private void closeWizardScreen(Wizard.WizardCancelClickEvent event) {
+//        closeWizardScreen();
+//    }
 }

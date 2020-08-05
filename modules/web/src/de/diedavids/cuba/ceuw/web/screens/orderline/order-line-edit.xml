@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+  caption="msg://orderLineEdit.caption"
+  focusComponent="form"
+  messagesPack="de.diedavids.cuba.ceuw.web.screens.orderline">
+  <data>
+    <instance id="orderLineDc"
+      class="de.diedavids.cuba.ceuw.entity.OrderLine">
+      <view extends="_local">
+        <property name="product" view="_base"/>
+      </view>
+      <loader/>
+    </instance>
+  </data>
+  <dialogMode height="AUTO"
+    width="AUTO"
+    modal="true"
+    forceDialog="true"/>
+  <layout expand="editActions" spacing="true">
+    <form id="form" dataContainer="orderLineDc">
+      <column width="350px">
+        <textField id="positionField" property="position"/>
+        <pickerField id="productField" property="product">
+          <actions>
+            <action id="lookup" type="picker_lookup"/>
+            <action id="clear" type="picker_clear"/>
+          </actions>
+        </pickerField>
+        <textField id="amountField" property="amount"/>
+        <lookupField id="amountUnitField" property="amountUnit"/>
+      </column>
+    </form>
+    <hbox id="editActions" spacing="true">
+      <button action="windowCommitAndClose"/>
+      <button action="windowClose"/>
+    </hbox>
+  </layout>
+</window>

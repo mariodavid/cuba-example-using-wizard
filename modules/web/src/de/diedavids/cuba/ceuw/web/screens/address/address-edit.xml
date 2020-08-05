@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+  caption="msg://addressEdit.caption"
+  focusComponent="form"
+  messagesPack="de.diedavids.cuba.ceuw.web.screens.address">
+  <data>
+    <instance id="addressDc"
+      class="de.diedavids.cuba.ceuw.entity.Address">
+      <view extends="_local"/>
+      <loader/>
+    </instance>
+  </data>
+  <dialogMode height="AUTO"
+    width="AUTO"
+    modal="true"
+    forceDialog="true"/>
+  <layout expand="editActions" spacing="true">
+    <form id="form" dataContainer="addressDc">
+      <column width="350px">
+        <textField id="streetField" property="street"/>
+        <textField id="postalCodeField" property="postalCode"/>
+        <textField id="cityField" property="city"/>
+        <lookupField id="countryField" property="country"/>
+      </column>
+    </form>
+    <hbox id="editActions" spacing="true">
+      <button action="windowCommitAndClose"/>
+      <button action="windowClose"/>
+    </hbox>
+  </layout>
+</window>
