@@ -204,29 +204,5 @@
         </hbox>
       </tab>
     </wizard:simpleWizard>
-<!--    <wizard:wizard id="checkoutWizard" width="100%">-->
-
-<!--      <wizard:step id="step1"-->
-<!--        icon="font-icon:USER"-->
-<!--        caption="msg://step1Customer"-->
-<!--        screen="checkout-step-1-customer"/>-->
-
-<!--      <wizard:step id="step2"-->
-<!--        icon="font-icon:MAP_MARKER"-->
-<!--        caption="msg://step2Address"-->
-<!--        screen="checkout-step-2-address"/>-->
-
-<!--      <wizard:step id="step3"-->
-<!--        icon="font-icon:LIST_UL"-->
-<!--        caption="msg://step3Items"-->
-<!--        screen="checkout-step-3-items"/>-->
-
-<!--      <wizard:step id="step4"-->
-<!--        icon="font-icon:CHECK"-->
-<!--        caption="msg://step4Summary"-->
-<!--        screen="checkout-step-4-summary"/>-->
-<!--    </wizard:wizard>-->
-
-
   </layout>
 </window>
