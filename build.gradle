@@ -42,7 +42,7 @@ cuba {
 
 dependencies {
     appComponent("com.haulmont.cuba:cuba-global:$cubaVersion")
-    appComponent("de.diedavids.cuba.wizard:wizard-global:0.7.0-SNAPSHOT")
+    appComponent("de.diedavids.cuba.wizard:wizard-global:0.8.0")
 
 }
 

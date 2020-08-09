@@ -23,10 +23,11 @@ import de.diedavids.cuba.ceuw.entity.Address;
 import de.diedavids.cuba.ceuw.entity.Customer;
 import de.diedavids.cuba.ceuw.entity.Order;
 import de.diedavids.cuba.ceuw.entity.OrderLine;
-import de.diedavids.cuba.wizard.gui.components.simple.SimpleWizard;
-import de.diedavids.cuba.wizard.gui.components.simple.SimpleWizard.WizardCancelClickEvent;
-import de.diedavids.cuba.wizard.gui.components.simple.SimpleWizard.WizardFinishClickEvent;
-import de.diedavids.cuba.wizard.gui.components.simple.SimpleWizard.WizardStepPreChangeEvent;
+import de.diedavids.cuba.wizard.gui.components.Wizard;
+import de.diedavids.cuba.wizard.gui.components.Wizard.Direction;
+import de.diedavids.cuba.wizard.gui.components.Wizard.WizardCancelClickEvent;
+import de.diedavids.cuba.wizard.gui.components.Wizard.WizardFinishClickEvent;
+import de.diedavids.cuba.wizard.gui.components.Wizard.WizardTabPreChangeEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -58,7 +59,7 @@ public class CheckoutWizard extends Screen {
     @Inject
     protected CollectionPropertyContainer<OrderLine> orderLinesDc;
     @Inject
-    protected SimpleWizard wizard;
+    protected Wizard wizard;
     @Inject
     protected Form customerForm;
     @Inject
@@ -96,28 +97,28 @@ public class CheckoutWizard extends Screen {
     }
 
     @Subscribe("wizard")
-    protected void onStepPreChange(WizardStepPreChangeEvent event) {
-        if (stepChange(event, "step3", "step4")) {
+    protected void onTabPreChange(WizardTabPreChangeEvent event) {
+        if (nextTab(event, "step3", "step4")) {
             if (noOrderLinesPresent()) {
-                event.preventStepChange();
+                event.preventTabChange();
                 warn(messageBundle.formatMessage("validationAtLeastOneOrderLine"));
             }
-        } else if (stepChange(event, "step1", "step2")) {
+        } else if (nextTab(event, "step1", "step2")) {
             final ValidationErrors validationErrors = validateComponents(
                 customerForm, communicationForm
             );
 
             if (!validationErrors.isEmpty()) {
-                event.preventStepChange();
+                event.preventTabChange();
                 screenValidation.showValidationErrors(this, validationErrors);
             }
-        } else if (stepChange(event, "step2", "step3")) {
+        } else if (nextTab(event, "step2", "step3")) {
             final ValidationErrors validationErrors = validateComponents(
                 deliveryAddressForm, invoiceAddressForm
             );
 
             if (!validationErrors.isEmpty()) {
-                event.preventStepChange();
+                event.preventTabChange();
                 screenValidation.showValidationErrors(this, validationErrors);
             }
         }
@@ -155,9 +156,17 @@ public class CheckoutWizard extends Screen {
         return validationErrors;
     }
 
-    private boolean stepChange(WizardStepPreChangeEvent event, String from, String to) {
-        return event.getPrevStep().equals(wizard.getTab(from)) &&
-            event.getStep().equals(wizard.getTab(to));
+    private boolean tabChange(WizardTabPreChangeEvent event, String from, String to, Direction direction) {
+        return event.getOldTab().equals(wizard.getTab(from)) &&
+            event.getNewTab().equals(wizard.getTab(to)) &&
+            direction.equals(event.getDirection());
+    }
+    private boolean nextTab(WizardTabPreChangeEvent event, String from, String to) {
+        return tabChange(event, from, to, Direction.NEXT);
+    }
+
+    private boolean previousTab(WizardTabPreChangeEvent event, String from, String to) {
+        return tabChange(event, from, to, Direction.NEXT);
     }
 
 
