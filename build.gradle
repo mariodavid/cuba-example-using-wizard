@@ -1,6 +1,6 @@
 
 buildscript {
-    ext.cubaVersion = '7.2.2'
+    ext.cubaVersion = '7.2.7'
     repositories {
         
         mavenLocal()
@@ -38,17 +38,11 @@ cuba {
         version = '0.1'
         isSnapshot = true
     }
-    tomcat {
-        dir = "$project.rootDir/deploy/tomcat"
-    }
-    ide {
-        vcs = 'Git'
-    }
 }
 
 dependencies {
     appComponent("com.haulmont.cuba:cuba-global:$cubaVersion")
-    appComponent("de.diedavids.cuba.wizard:wizard-global:0.6.1")
+    appComponent("de.diedavids.cuba.wizard:wizard-global:0.8.0")
 
 }
 
@@ -60,7 +54,20 @@ configure([globalModule, coreModule, webModule]) {
     apply(plugin: 'cuba')
 
     dependencies {
-        testCompile('junit:junit:4.12')
+        testCompile('org.junit.jupiter:junit-jupiter-api:5.5.2')
+        testCompile('org.junit.jupiter:junit-jupiter-engine:5.5.2')
+        testCompile('org.junit.vintage:junit-vintage-engine:5.5.2')
+
+        testCompile 'org.mockito:mockito-core:3.2.4'
+        testCompile 'org.mockito:mockito-junit-jupiter:3.2.4'
+
+
+        testCompile('org.spockframework:spock-core:1.2-groovy-2.5')
+        testCompile('org.springframework:spring-test:4.3.1.RELEASE')
+
+
+        testCompile("org.assertj:assertj-core:3.11.1")
+
     }
 
     task sourceJar(type: Jar) {
@@ -70,6 +77,9 @@ configure([globalModule, coreModule, webModule]) {
 
     artifacts {
         archives sourceJar
+    }
+    test {
+        useJUnitPlatform()
     }
 }
 
@@ -137,6 +147,8 @@ configure(webModule) {
         compileOnly(servletApi)
         compile(globalModule)
 
+
+        testCompile('de.diedavids.sneferu:sneferu:0.3.1')
     }
     
     task webArchive(type: Zip) {

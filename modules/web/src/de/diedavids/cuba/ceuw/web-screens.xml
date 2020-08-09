@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <screen-config xmlns="http://schemas.haulmont.com/cuba/screens.xsd">
-    <screen id="ceuw$Product.browse"
-            template="de/diedavids/cuba/ceuw/web/product/product-browse.xml"/>
-    <screen id="ceuw$Product.edit"
-            template="de/diedavids/cuba/ceuw/web/product/product-edit.xml"/>
-    <screen id="ceuw$ProductPrice.edit"
-            template="de/diedavids/cuba/ceuw/web/productprice/product-price-edit.xml"/>
-    <screen id="ceuw$OrderLine.edit"
-            template="de/diedavids/cuba/ceuw/web/orderline/order-line-edit.xml"/>
-    <screen id="ceuw$Order.browse"
-            template="de/diedavids/cuba/ceuw/web/order/order-browse.xml"/>
-    <screen id="ceuw$Order.edit"
-            template="de/diedavids/cuba/ceuw/web/order/order-edit.xml"/>
-    <screen id="ceuw$Customer.browse"
-            template="de/diedavids/cuba/ceuw/web/customer/customer-browse.xml"/>
-    <screen id="ceuw$Customer.edit"
-            template="de/diedavids/cuba/ceuw/web/customer/customer-edit.xml"/>
+
     <screen id="checkout-wizard"
             template="de/diedavids/cuba/ceuw/web/checkout/checkout-wizard.xml"/>
     <!--

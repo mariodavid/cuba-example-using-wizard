@@ -2,10 +2,11 @@
 <menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
     <menu id="application-ceuw"
           insertBefore="administration">
+        <item screen="ceuw_CheckoutWizard" caption="mainMsg://menu_config.ceuw_CheckoutWizard"/>
+        <separator />
         <item screen="ceuw$Product.browse"/>
         <item screen="ceuw$Order.browse"/>
         <item screen="ceuw$Customer.browse"/>
-        <item screen="checkout-wizard"/>
-        <item screen="dynamiccheckout-wizard"/>
+
     </menu>
 </menu-config>
